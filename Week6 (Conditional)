@@ -1,0 +1,17 @@
+import java.util.Scanner;
+public class Conditional
+{
+public static void main (String[]args)
+{
+
+int x = 1;
+int xx = 2;
+
+if((x==1) && (xx==2))
+System.out.println("x is 1 AND xx is 2");
+
+if((x==1)||(xx==1))
+System.out.println("x is 1 OR xx is 1");
+
+}
+}
