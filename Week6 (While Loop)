@@ -1,0 +1,41 @@
+import java.util.Scanner;
+public class ThreeTimes
+{
+public static void main (String[]args)
+{
+
+Scanner blake = new Scanner(System.in);
+
+int user;
+int computer;
+for(int round = 1; round < 4; round++)
+{
+computer = 0 +(int)(Math.random()*10);
+System.out.println("Enter a number between 0 and 10");
+
+user = blake.nextInt();
+System.out.printf("Random number is %d\n", computer);
+
+
+if(user > computer)
+{
+System.out.println("Too Big");
+}
+
+
+else if(user < computer)
+{
+System.out.println("Too Small");
+}
+
+
+else
+{
+System.out.println("Correct!");
+}
+}
+
+
+System.out.println("Adios!");
+}
+}
