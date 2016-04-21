@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class IfElseifElse
+{
+public static void main (String [] args)
+{
+
+Scanner blake = new Scanner(System.in);
+
+int x;
+int guess;
+
+System.out.println("Guess a number between 1 and 50:");
+guess = blake.nextInt();
+
+if (guess < 1 || guess > 50)
+{
+System.out.println("Not a valid number. Stop");
+System.exit(0);
+}
+
+x = 1 + (int)(Math.random()*50);
+System.out.println(x);
+
+
+if (x == guess)
+System.out.println("Correct!");
+
+
+else if (x < guess)
+System.out.println("Too High");
+
+
+else
+System.out.println("Too Low");
+}
+}
