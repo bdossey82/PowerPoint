@@ -1,0 +1,159 @@
+public interface Payable
+{double getPaymentAmount();}
+
+public class Invoice implements Payable
+{
+
+private String partNumber;
+privateString partDescription;
+private int quantity;
+private double pricePerItem;
+
+public Invoice (String part, String description, int count, double price)
+
+{
+partNumber = part;
+partDescription = description;
+setQuantity( count );
+setPricePerItem( price);
+}
+
+public void setPartNumber( String part )
+{partNumber = part;}
+
+public String getPartNumber()
+{return partNumber;}
+
+public void setPartDescription( String description )
+{partDescription = description;}
+
+public String getPartDescription()
+{return partDescription;}
+
+public void setQuantity( int count )
+
+{
+if ( count >= 0 )
+quantity = count;
+else
+throw new IllegalArgumentException("Quantity must be >= 0" );
+}
+
+public int get Quantity()
+{return quantity;}
+
+public void setPricePerItem( double price )
+
+{
+if ( price >= 0.0)
+pricePerItem = price;
+else 
+throw new IllegalArgumentException("Price per item must be >= 0");
+}
+
+public double getPricePerItem()
+{return pricePerItem;}
+
+@Override
+public String toString()
+{
+return String.format(" %s: \n%s: %s (%s) \n%s: %d \n%s: $%,.2f", "invoice", "part number", getPartNumber(), getPartDescription(), "quantity", getQuantity(), "price per item", getPricePerItem() );
+}
+
+@Override
+public double getPaymentAmount()
+{return getQuantity() * getPricePerItem();}
+}
+
+public abstract class Employee implements Payable
+{
+
+private String firstName;
+private String lastName;
+private String socialSecurityNumber;
+
+public Employee( String first, String last, String ssn)
+{
+firstName = first;
+lastName = last;
+socialSecurityNumber = ssn;
+}
+
+public void setFirstName( String first )
+{firstName = first;}
+
+public String getFirstName()
+{return firstName;}
+
+public void setLastName( String last)
+{lastName = last;}
+
+public String getLastName()
+{return lastName;}
+
+public void setSocialSecurityNumber( String ssn )
+{socialSecurityNumber = ssn;}
+
+public String getSocialSecurityNumber()
+{return socialSecurityNumber;}
+
+@Override
+public String toString()
+{
+return String.format("%s %s\nsocial security number: %s", getFirstName(), getLastName(), getSocialSecurityNumber() );
+}
+}
+//Note: We do not implement Payable method getPaymentAmount here so this class must be declared abstract to avoid compilation error.
+
+public class SallariedEmpoyee extends Employee
+{
+private double weeklySalary;
+
+public SalariedEmployee( String first, String last, String ssn, double salary )
+{super( first, last, ssn ); setWeeklySalary( salary );}
+
+public void setWeeklySalary( double salary )
+
+{
+if ( salary >= 0.0 )
+baseSalary = salary;
+else
+throw new IllegalArgumentException("Weekly salary must be >= 0.0");
+}
+
+public double getWeeklySalary()
+{return weeklySalary;}
+
+@Override
+public double getPaymentAmount()
+{return getWeeklySalary();}
+
+@Override
+public String toString()
+{
+return String.format("salaried employee: %s\n%s: $%, .2f", super.toString(), "weekly salary", getWeeklySalary() );
+}
+}
+
+public class PayableInterfaceTest
+{
+public static void main(String[] args)
+{
+
+Payable[] payableObjects = new Payable[ 4 ];
+
+payableObjects[ 0 ] = new Invoice("01234", "seat", 2, 375.00);
+payableObjects[ 1 ] = new Invoice("56789", "tire", 4, 79.95);
+payableObjects[ 2 ] = new SalariedEmployee("John", "Smith", "111-11-1111", 800.00);
+payableObjects[ 3 ] = new SalariedEmployee("Lisa", "Barnes", "888-88-8888", 1200.00);
+
+System.out.println("Invoices and Employees processed polymorphically: \n");
+
+for ( Payable currentPayable : payableObjects )
+{
+
+System.out.printf("%s \n%s: $%, .2f\n\n", currentPayble.toString(), "payment due", currentPayableAmount() );
+}
+}
+}
+
