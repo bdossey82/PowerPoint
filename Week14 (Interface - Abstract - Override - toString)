@@ -5,7 +5,7 @@ public class Invoice implements Payable
 {
 
 private String partNumber;
-privateString partDescription;
+private String partDescription;
 private int quantity;
 private double pricePerItem;
 
@@ -15,7 +15,7 @@ public Invoice (String part, String description, int count, double price)
 partNumber = part;
 partDescription = description;
 setQuantity( count );
-setPricePerItem( price);
+setPricePerItem( price );
 }
 
 public void setPartNumber( String part )
@@ -39,13 +39,13 @@ else
 throw new IllegalArgumentException("Quantity must be >= 0" );
 }
 
-public int get Quantity()
+public int getQuantity()
 {return quantity;}
 
 public void setPricePerItem( double price )
 
 {
-if ( price >= 0.0)
+if ( price >= 0.0 )
 pricePerItem = price;
 else 
 throw new IllegalArgumentException("Price per item must be >= 0");
@@ -85,7 +85,7 @@ public void setFirstName( String first )
 public String getFirstName()
 {return firstName;}
 
-public void setLastName( String last)
+public void setLastName( String last )
 {lastName = last;}
 
 public String getLastName()
@@ -105,7 +105,7 @@ return String.format("%s %s\nsocial security number: %s", getFirstName(), getLas
 }
 //Note: We do not implement Payable method getPaymentAmount here so this class must be declared abstract to avoid compilation error.
 
-public class SallariedEmpoyee extends Employee
+public class SalariedEmployee extends Employee
 {
 private double weeklySalary;
 
