@@ -1,0 +1,24 @@
+public class MainProcess
+{
+
+public static void main(String[]args)
+{
+
+System.out.println("Start");
+for(int i=0;i<25;i++)
+{
+
+Runnable T1 = new Dice(1000L + i);
+Runnable T2 = new Dice(1000L + i);
+
+System.out.println("Starting Executor!");
+
+ExecutorService threadExecutor = Executors.newCachedThreadPool();
+
+threadExecutor.execute(T1);
+threadExecutor.execute(T2);
+}
+System.out.println("Complete");
+}
+}
+
