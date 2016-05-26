@@ -1,0 +1,24 @@
+public class DemoRunnable implements Runnable
+{
+public void run()
+{
+//Code.
+}
+}
+//With a "new Thread(demoRunnable).start()" call.
+
+
+public class DemoThread extends Thread
+{
+
+public DemoThread()
+{
+super("DemoThread");
+}
+
+public void run()
+{
+//Code.
+}
+}
+//With a "demoThread.start()" call.
